@@ -1,0 +1,136 @@
+{% extends 'shop/basic.html' %}
+{% block title%} Checkout - My Awesome Cart{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="col my-4">
+        <h2>Step 1 - My Awesome Cart Express Checkout - Review Your Cart Items</h2>
+        <div class="my-4">
+            <ul class="list-group" id="items">
+            </ul>
+        </div>
+    </div>
+    <br>
+    <div class="col my-4">
+        <h2>Step 2 - Enter Address & Other Details:</h2>
+        <form action="\shop\checkout\" method="post">{% csrf_token %}
+            <div class="form-row">
+                <input type="hidden" id="itemsJson" name="itemsJson">
+                <input type="hidden" id="amount" name="amount">
+                <div class="form-group col-md-6">
+                    <label for="name">Name</label>
+                    <input type="name" class="form-control" id="name"  name="name" placeholder="Enter Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address1">Address Line 1</label>
+                <input type="text" class="form-control" id="address1" name="address1" placeholder="Street, House No. etc...">
+            </div>
+            <div class="form-group">
+                <label for="address2">Address line 2</label>
+                <input type="text" class="form-control" id="address2" name="address2" placeholder="Colony, Locality etc...">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city" name="city" placeholder="Enter City">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="state">State</label>
+                    <input type="text" class="form-control" id="state" name="state" placeholder="Enter State">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="zipcode">Zip Code</label>
+                    <input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="Enter Zip Code">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Phone Number">
+            </div><br>
+            <div class="col my-4" style="margin-left: -15px;">
+            <h2>Step 3 - Enter Payment Details:</h2>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="holdername">Card Holder's Name</label>
+                    <input type="text" class="form-control" id="holdername"  name="holdername" placeholder="Enter Card Holder's Name">
+                </div>
+            </div>
+            <div class="form-row">
+                <div>
+                <label for="card4" style="margin-left:4px;">Card Number</label>
+                </div>
+            </div>
+                <div class="form-row">
+                <input type="text" class="form-control col-md-1 mx-2" id="card4"  name="card4" >
+                <input type="text" class="form-control col-md-1 mx-2" id="card8"  name="card8" >
+                <input type="text" class="form-control col-md-1 mx-2" id="card12"  name="card12" >
+                <input type="text" class="form-control col-md-1 mx-2" id="card16"  name="card16" >
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="cvv">CVV</label>
+                    <input type="text" class="form-control" id="cvv"  name="cvv" placeholder="Enter CVV">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exp">Enter Card Expiry </label>
+                    <input type="text" class="form-control" id="exp"  name="exp" placeholder="MM/YY">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary my-2">Place Order</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+{% block js %}
+<script>
+if (localStorage.getItem('cart') == null) {
+    var cart = {};
+} else {
+    cart = JSON.parse(localStorage.getItem('cart'));
+}
+console.log(cart);
+var sum = 0;
+var total_bill = 0
+if ($.isEmptyObject(cart)) {
+    //if object is empty
+    mystr = `<p>Your cart is empty, please add some items to your cart before checking out!</p>`
+    $('#items').append(mystr);
+} else {
+    for (item in cart) {
+        let name = cart[item][1];
+        let qty = cart[item][0];
+        let price = cart[item][2] * qty;
+        total_bill += price
+        sum = sum + qty;
+        mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
+                    ${name}
+                    <h5><span class="badge badge-light">${qty} Item - Rs.${price}</span></h5>
+
+                </li>`
+        $('#items').append(mystr);
+    }
+
+    total=`<div class="my-2"><li class="list-group-item d-flex justify-content-between align-items-center">
+                    <b>TOTAL BILL</b>
+                    <h5><span class="badge badge-light">Rs.${total_bill}</span></h5>
+
+                </li></div>`
+
+    $('#items').append(total);
+}
+document.getElementById('cart').innerHTML = sum;
+$('#itemsJson').val(JSON.stringify(cart));
+{% if variable %}
+alert('Thanks for ordering with us. Your order is is {{id}}. Use it to track your order using our order tracker');
+localStorage.clear();
+document.location = "/shop/orderplaced/{{id}}";
+{% endif %}
+$('#amount').val($('#total_bill').html());
+</script>
+{% endblock %}

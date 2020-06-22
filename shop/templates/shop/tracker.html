@@ -1,0 +1,17 @@
+{% extends 'shop/basic.html' %}
+
+{% block title%} Tracker - ShopFrom.com{% endblock %}
+{% block body %}
+<div class="container" align="center">
+<div class="text-center">
+<form class="form-signin" action="/shop/showOrderStatus/" method="post">{% csrf_token %}
+  <h1 class="h3 mb-4 mt-4 font-weight-normal">Enter Your Details</h1>
+  <label for="ordID" class="sr-only">Order ID</label>
+  <input type="text" id="ordID" name="ordID" class="form-control mb-3" placeholder="Enter Order ID" required>
+  <label for="email" class="sr-only">Email address</label>
+  <input type="email" id="email" name="email" class="form-control mb-3" placeholder="Enter your Email address" required autofocus>
+  <button type="submit" class="btn btn-lg btn-secondary" align="center">Go To Tracker</button>
+</form>
+</div>
+</div>
+{% endblock %}

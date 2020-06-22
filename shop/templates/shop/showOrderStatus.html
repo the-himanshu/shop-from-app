@@ -1,0 +1,35 @@
+{% extends 'shop/basic.html' %}
+{% block title%} Checkout - My Awesome Cart{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="col my-4">
+        <h2>Order Tracking</h2>
+        {% for i in updateList %}
+
+        <div class="list-group bg-light " style="border-style:outset;padding: 5px 5px 5px 5px;margin-top:12px;">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{i.0}}</h5>
+            </div>
+        <p class="mb-1">{{i.1}}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="container">
+    <div class="col my-4">
+        <h2>Order Info</h2>
+        {% for i in items %}
+
+        <div class="list-group bg-light " style="border-style:outset;padding: 5px 5px 5px 5px;margin-top:12px;">
+            <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{i.0}}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="badge badge-secondary">{{i.1}}</span></h5>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
+{% block js %}
+{% endblock %}

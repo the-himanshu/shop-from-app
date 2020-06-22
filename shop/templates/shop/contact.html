@@ -1,0 +1,57 @@
+{% extends 'shop/basic.html' %}
+
+{% block title%} Contact  ShopFrom.com{% endblock %}
+{% block body %}
+
+<div class="container my-5">
+    <h3>&nbsp&nbsp&nbspContact us regarding any query</h3>
+    <form action="/shop/contact/" method="post">{% csrf_token %}
+  <div class="form-group">
+      <input type="text" class="form-control mx-4 my-4" id="name" name="name" placeholder="Enter your name">
+  </div>
+  <div class="form-group">
+      <input type="email" class="form-control mx-4 my-4" id="email" name="email" placeholder="Enter your e-mail id">
+  </div>
+  <div class="form-group">
+      <input type="tel" class="form-control mx-4 my-4" id="phone" name="phone" placeholder="Enter your phone number">
+  </div>
+  <div class="form-group">
+      <textarea class="form-control mx-4 my-4" id="desc" rows="4" name="desc" placeholder="Enter your query here"></textarea>
+  </div>
+        &nbsp&nbsp&nbsp&nbsp&nbsp
+   <button type="submit" class="btn btn-success">Submit</button>
+</form>
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script>
+console.log('working');
+if(localStorage.getItem('cart') == null){
+var cart = {};
+}
+else
+{
+cart = JSON.parse(localStorage.getItem('cart'));
+document.getElementById('cart').innerHTML = Object.keys(cart).length;
+}
+$('.cart').click(function(){
+console.log('clicked');
+var idstr = this.id.toString();
+console.log(idstr);
+if (cart[idstr] !=undefined){
+cart[idstr] = cart[idstr] + 1;
+}
+else
+{
+cart[idstr] = 1;
+}
+console.log(cart);
+localStorage.setItem('cart', JSON.stringify(cart));
+document.getElementById('cart').innerHTML = Object.keys(cart).length;
+});
+$('#popcart').popover();
+document.getElementById('popcart').setAttribute('data-content','<h6>Cart for your items</h6>');
+</script>
+{% endblock %}

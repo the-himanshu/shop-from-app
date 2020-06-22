@@ -1,0 +1,71 @@
+{% extends 'shop/basic.html' %}
+
+{% block title%} About  ShopFrom.com{% endblock %}
+{% block body %}
+<body>
+<main role="main">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">ShopFrom.com</h1>
+      <p>ShopFrom.com is an Indian e-commerce company. It was founded by Himanshu Malik in 2019.
+      The company initially focused on book sales, before expanding into other product categories such as consumer electronics,
+          fashion, home essentials & groceries, and lifestyle products.<br>We also provide blogging facility within our website.</p>
+      <p>For any queries regarding our website, kindly visit CONTACT US section.</p>
+      <p><a class="btn btn-primary btn-lg" href="\shop\contact" role="button">CONTACT US</a></p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-4">
+        <h2>About the Developer</h2>
+        <p>Himanshu Malik, 20, is a passionate developer having good knowledge about WEB DESIGNING (HTML, CSS, Bootstrap) and WEB DEVELOPMENT (Django, Javascript, JQuery)</p>
+      </div>
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4">
+        <h2>Follow Us On</h2>
+        <p><a href="#">Instagram</a><br><a href="#">Facebook</a><br><a href="#">Github</a></p>
+      </div>
+    </div>
+
+  </div> <!-- /container -->
+
+</main>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block js %}
+<script>
+console.log('working');
+if(localStorage.getItem('cart') == null){
+var cart = {};
+}
+else
+{
+cart = JSON.parse(localStorage.getItem('cart'));
+document.getElementById('cart').innerHTML = Object.keys(cart).length;
+}
+$('.cart').click(function(){
+console.log('clicked');
+var idstr = this.id.toString();
+console.log(idstr);
+if (cart[idstr] !=undefined){
+cart[idstr] = cart[idstr] + 1;
+}
+else
+{
+cart[idstr] = 1;
+}
+console.log(cart);
+localStorage.setItem('cart', JSON.stringify(cart));
+document.getElementById('cart').innerHTML = Object.keys(cart).length;
+});
+$('#popcart').popover();
+document.getElementById('popcart').setAttribute('data-content','<h6>Cart for your items</h6>');
+</script>
+{% endblock %}
