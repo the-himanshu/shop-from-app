@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+
+    <title>Welcome to ShopFrom.com</title>
+</head>
+
+<body>
+    <header>
+        <div class="collapse bg-primary" id="navbarHeader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-md-7 py-4">
+                        <h4 class="text-white">About the developer</h4>
+                        <p class="text-white">Himanshu Malik, 20, is a passionate developer having good knowledge about WEB DESIGNING (HTML, CSS,
+                            Bootstrap) and WEB DEVELOPMENT (Django, Javascript, JQuery). He is currently pursuing B.Tech
+                            from
+                            <b>UIET KURUKSHETRA UNIVERSITY</b> in Computer Science Stream.</p>
+                    </div>
+                    <div class="col-sm-4 offset-md-1 py-4">
+                        <h4 class="text-white">
+                            <b>HIMANSHU MALIK
+                                <b></b>
+                        </h4>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#" class="text-white">Follow on Twitter</a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-white">Like on Facebook</a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-white">Email me</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navbar navbar-dark bg-primary shadow-sm">
+            <div class="container d-flex justify-content-between">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" aria-hidden="true" class="mr-2" viewBox="0 0 24 24" focusable="false">
+                        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+                        <circle cx="12" cy="13" r="4" />
+                    </svg>
+                    <strong>ShopFrom.com</strong>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main role="main">
+
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1>WELCOME TO SHOPFROM</h1>
+                <p class="lead text-muted">
+                    <b>World's Leading E-Commerce Website</b>
+                </p>
+
+                <!-- Button trigger modal for sign up -->
+                <button type="button" style="width:100px;" class="btn btn-primary" data-toggle="modal" data-target="#SignUp">
+                    <b>Sign Up</b>
+                </button>
+
+                <!-- Modal for signup-->
+                <div class="modal fade" id="SignUp" tabindex="-1" role="dialog" aria-labelledby="SignUp" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel" style="margin-left:90px;">SIGNUP - Create a New Account</h5>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/shop/signup/" method="post">{% csrf_token %}
+                                    <div class="container my-2">
+                                        <input type="text" class="form-control mx-1 my-1" id="uname" name="uname" placeholder="Enter Your User Name">
+                                    </div>
+                                    <div class="container my-2">
+                                        <input type="text" class="form-control mx-1 my-1" id="name" name="name" placeholder="Enter Your First Name">
+                                    </div>
+                                    <div class="container my-2">
+                                        <input type="text" class="form-control mx-1 my-1" id="lastname" name="lastname" placeholder="Enter Your Last Name">
+                                    </div>
+                                    <div class="container my-2">
+                                        <input type="email" class="form-control mx-1 my-1" id="email" name="email" placeholder="Enter Your E-Mail">
+                                    </div>
+                                    <div class="container my-2">
+                                        <input type="tel" class="form-control mx-1 my-1" id="phone" name="phone" placeholder="Enter Your Phone Number">
+                                    </div>
+                                    <div class="container my-2">
+                                        <input type="password" class="form-control mx-1 my-1" id="pass" name="pass" placeholder="Create Password">
+                                    </div>
+                                    <div class="container my-2">
+                                        <input type="password" class="form-control mx-1 my-1" id="cpass" name="cpass" placeholder="Confirm your Password">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="container mx-10">
+                                            <button type="submit" style="width:100px;" class="btn btn-primary">Sign Up</button>
+                                            <button type="button" style="width:100px;" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Button trigger modal for login -->
+                <button type="button" style="width:100px;" class="btn btn-primary" data-toggle="modal" data-target="#Login">
+                    <b>Login</b>
+                </button>
+
+                <!-- Modal for login-->
+                <div class="modal fade" id="Login" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="LoginTitle" style="margin-left:120px;">LOGIN to your Account</h5>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/shop/login/" method="post">{% csrf_token %}
+                                    <div class="container my-2">
+                                        <input type="text" class="form-control mx-1 my-1" id="l_name" name="l_name" placeholder="Enter Your Username">
+                                    </div>
+                                    <div class="container my-2">
+                                        <input type="password" class="form-control mx-1 my-1" id="l_pass" name="l_pass" placeholder="Enter Your Password">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="container mx-10">
+                                            <button type="submit" style="width:100px;" class="btn btn-primary">Login</button>
+                                            <button type="button" style="width:100px;" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <section>
+            <div class="container mt-5" style="border:relief;">
+              <form method="get" action="/news">
+                <button class="btn btn-success" type="submit" style="margin-left:465px;margin-top:30px;">Go To The News Portal</button>
+              </form>
+            </div>
+              <h4 class="bg-primary text-white" style="text-align:center;margin-top:100px;">Latest News Headlines</h4>
+                <div class="wpb_column vc_column_container vc_col-sm-12">
+                    <div class="vc_column-inner">
+                        <div class="wpb_wrapper">
+                            <div class="wpb_raw_code wpb_content_element wpb_raw_html">
+                                <div class="wpb_wrapper">
+                                    <marquee onmouseover="this.stop();" onmouseout="this.start();" style="margin-bottom: -16px;" scrollamount="8" direction="left">
+                                        <ul class="text-primary">
+                                        {% for item in list %}
+                                            <a style=" margin-left: 139px; padding-left: 29px; border-left: 2px solid #fff; ">
+                                                <font>
+                                                    <a>|| &nbsp&nbsp&nbsp&nbsp {{item}} &nbsp&nbsp&nbsp&nbsp ||</a>
+                                                </font>
+                                            </a>
+                                         {% endfor %}
+                                        </ul>
+                                    </marquee>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+            crossorigin="anonymous"></script> {% block js %} {% endblock %}
+    </main>
+</body>
+
+</html>

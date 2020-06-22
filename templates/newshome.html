@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>NewsRoom - ShopFrom.com</title>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v5.0"></script>
+  </head>
+  <body class="bg-dark">
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h4 class="my-0 mr-md-auto font-weight-normal font-italic" style="font-family:vaticanbrushbold"><b>News Portal - ShopFrom.com<b></b></h4>
+  <nav class="my-2 my-md-0 mr-md-3">
+  </nav>
+  <a class="btn btn-outline-dark" href="/">Back To Main Menu</a>
+</div>
+    <div class="container mt-3">
+      <div class="row my-2">
+          {%for item in list%}
+            <div class="col-md-6">
+            <div class="row rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" style="margin-right:20px;margin-left:20px;">
+            <div class="col p-4 d-flex flex-column position-static bg-light"  style="height:180px;">
+             <h3 class="mb-0">{{item.0}}</h3>
+                <form method="get" action="/newspost">
+                <input type="hidden" id="query" name="query" value={{item.1}}>
+                <button class="btn btn-dark my-3" type="submit">Continue Reading</button>
+                </form>
+            </div>
+            </div>
+            </div>
+          {% if forloop.counter|divisibleby:2 %}
+          </div>
+          <div class="row my-2">
+              {%endif%}
+          {%endfor%}
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>
