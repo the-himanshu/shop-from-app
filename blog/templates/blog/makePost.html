@@ -1,0 +1,38 @@
+{% extends 'blog/basic.html' %}
+
+{% block title%} Make a Blogpost{% endblock %}
+{% block body %}
+
+<div class="container my-5">
+    <h3>&nbsp&nbsp&nbspWrite Your Post Here</h3>
+    <form action="/blog/savePost/" method="post">{% csrf_token %}
+  <div class="form-group">
+      <input type="text" class="form-control mx-4 my-4" id="name" name="name" placeholder="Enter your name">
+  </div>
+  <div class="form-group">
+      <input type="text" class="form-control mx-4 my-4" id="title" name="title" placeholder="Enter Post Title">
+  </div>
+  <div class="form-group">
+      <input type="text" class="form-control mx-4 my-4" id="head1" name="head1" placeholder="Enter main heading">
+  </div>
+  <div class="form-group">
+      <textarea class="form-control mx-4 my-4" id="chead1" rows="10" name="chead1" placeholder="Enter Content"></textarea>
+  </div>
+  <div class="form-group">
+      <input type="text" class="form-control mx-4 my-4" id="head2" name="head2" placeholder="Enter main subheading">
+  </div>
+  <div class="form-group">
+      <textarea class="form-control mx-4 my-4" id="chead2" rows="10" name="chead2" placeholder="Enter Content"></textarea>
+  </div>
+  <div class="form-group">
+      <input type="text" class="form-control mx-4 my-4" id="head3" name="head3" placeholder="Enter 2nd subheading">
+  </div>
+  <div class="form-group">
+      <textarea class="form-control mx-4 my-4" id="chead3" rows="10" name="chead3" placeholder="Enter Content"></textarea>
+  </div>
+        &nbsp&nbsp&nbsp&nbsp&nbsp
+   <button type="submit" class="btn btn-success">Submit</button>
+</form>
+</div>
+
+{% endblock %}
